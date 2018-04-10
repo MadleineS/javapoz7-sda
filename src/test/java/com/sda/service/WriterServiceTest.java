@@ -75,8 +75,9 @@ public class WriterServiceTest {
 
 
     }
+
     @Test
-    public void setMultipleNames(){
+    public void setMultipleNames() {
         //given
         String value = "SZYMON,ANNA,JAN";
 

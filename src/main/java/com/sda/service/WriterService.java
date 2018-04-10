@@ -6,8 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 
 public class WriterService {
-    public String write(String name){
-        return prefix(name)+ content(name) + suffix(name);
+    public String write(String name) {
+        return prefix(name) + content(name) + suffix(name);
 
 
 //        if (name != null && name.toUpperCase().equals(name)){
@@ -18,29 +18,30 @@ public class WriterService {
 
 //        if (name == null){
 //           return "Hello, my friend.";
-        }
+    }
 
     private String prefix(String name) {
         return isCapitalizedName(name) ? "HELLO, " : "Hello, ";
     }
 
     private String content(String name) {
-        if (StringUtils.isBlank(name)){
-            return "my firend";
+        if (StringUtils.isBlank(name)) {
+            return "my friend";
         }
         StringBuilder builder = new StringBuilder();
         String[] names = name.split(",");
         for (int i = 0; i < names.length - 1; i++) {
             builder.append(names[i])
-                    .append(getDelimiter(i, names,name));
+                    .append(getDelimiter(i, names, name));
 //                            isCapitalizedName(name) ? "AND": "amd")
 
         }
 
-        return builder.append(names[names.length -1]).toString();
+        return builder.append(names[names.length - 1]).toString();
         //return StringUtils.isBlank(name)  ? "my friend" : name;
     }
-    private String getDelimiter(int index, String[] names, String name){
+
+    private String getDelimiter(int index, String[] names, String name) {
         return index != names.length - 2 ? ", " : (
                 isCapitalizedName(name) ? "AND" : " amd ");
 
@@ -49,12 +50,13 @@ public class WriterService {
     private String suffix(String name) {
         return isCapitalizedName(name) ? "!" : ".";
     }
-    private boolean isCapitalizedName(String name){
+
+    private boolean isCapitalizedName(String name) {
         return StringUtils.isNotBlank(name) && name.toUpperCase().equals(name);
     }
 //    "" -> "Hello, my friend!"
 
-    public static void main(String[]args){
+    public static void main(String[] args) {
         WriterService writerService = new WriterService();
         String write = writerService.write("");
 
